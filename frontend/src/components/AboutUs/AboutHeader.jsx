@@ -71,7 +71,7 @@ const AboutHeader = () => {
           </div>
           <div>
             <Link
-              to="/sign-in"
+              to="/login"
               className="inline-block text-base font-semibold px-8 py-3 lg:px-12 lg:py-5 leading-none border
           rounded-full text-[#012054] border-[#012054] hover:border-transparent
           hover:text-white hover:bg-[#012054] mt-4 lg:mt-0 "

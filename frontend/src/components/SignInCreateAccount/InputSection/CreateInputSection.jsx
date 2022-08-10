@@ -23,7 +23,7 @@ const collectData = async () =>{
    });
    result = await result.json();
    console.log(result);
-   navigate('/sign-in')
+   navigate('/login')
 }
 
 

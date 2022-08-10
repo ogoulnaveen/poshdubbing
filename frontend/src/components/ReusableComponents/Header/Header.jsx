@@ -70,7 +70,7 @@ const Header = () => {
         </div>
         <div>
           <Link
-            to="/sign-in"
+            to="/login"
             className="inline-block text-base font-semibold px-8 py-3 lg:px-12 lg:py-5 leading-none border
           rounded-full text-white border-[#5BECC0] hover:border-transparent
           hover:text-white hover:bg-[#5BECC0] mt-4 lg:mt-0 "

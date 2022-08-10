@@ -14,6 +14,7 @@ import {
   SettingsIcon,
   LogoutIcon,
 } from "../assets/svg";
+import axios from "axios";
 
 const sidebarData = [
   { id: 0, name: "Home", icon: <HomeIcon /> },
@@ -23,35 +24,45 @@ const sidebarData = [
 ];
 
 export default function AdminDashboard() {
-  const [width, setWidth] = useState(window.innerWidth);
+  // const [width, setWidth] = useState(window.innerWidth);
   const [toggle, setToggle] = useState(true);
   const [showToggle, setShowToggle] = useState(false);
   const [showLayout, setShowLayout] = useState("home");
+  const [users,setUsers] = useState([])
 
+  const navigate = useNavigate();
 
-const navigate = useNavigate();
-
-  const logout = () => {
-        localStorage.clear();
-        navigate('/')
-
-
-  }
+  const logout = (evt) => {
+    console.log(evt);
+    if (evt.type == "click") {
+      // localStorage.clear();
+      navigate("/login");
+    }
+  };
 
   const updateDimensions = () => {
-    setWidth(window.innerWidth);
+    // setWidth(window.innerWidth);
   };
 
   useEffect(() => {
-    if (width > 1024) {
-      setShowToggle(true);
-    }
+     axios
+      .get(`http://localhost:5000/getUsers`)
+      .then((response) => {
+        console.log("response", response.data.user);
+        setUsers(response.data.user)
+        // if (response && response.data.result =='no users found') 
+        // alert('Invalid User Name or Password')
+        // else navigate("/dashboard")
+      });
+    // if (width > 1024) {
+    //   setShowToggle(true);
+    // }
+    console.log("dashbaord");
+    // navigate('/dashboard')
+   
+  }, []);
 
-    window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
-  }, [toggle, width]);
-
-  const logoBrand = width < 1024 ? logoD : logo;
+  // const logoBrand = width < 1024 ? logoD : logo;
 
   return (
     <section className="flex">
@@ -59,20 +70,20 @@ const navigate = useNavigate();
         <div className="absolute left-[100px] mt-8 sm:left-[110px] sm:mt-14">
           <button
             className="lg:hidden"
-            onClick={() => setToggle(!toggle)}
+            onClick={() => {}}
             type="button"
           >
-            {toggle && <CloseNavBar />}
+            {/* {toggle && <CloseNavBar />} */}
           </button>
           <button
             className={`${
               !toggle &&
               "absolute right-14 -mt-5 transition-all duration-700 sm:right-12 sm:-mt-8 lg:hidden"
             }`}
-            onClick={() => setToggle(!toggle)}
+            onClick={() => {}}
             type="button"
           >
-            {!toggle && <NavHamburger />}
+            {/* {!toggle && <NavHamburger />} */}
           </button>
         </div>
         <aside
@@ -83,12 +94,12 @@ const navigate = useNavigate();
             <div className="flex h-screen flex-col justify-between">
               <div className="mt-2 flex flex-col justify-center sm:mt-6">
                 <div className="-ml-3 flex justify-center">
-                  <img
-                    onClick={() => navigate("/")}
+                  {/* <img
+                   
                     className="w-9/12 cursor-pointer"
-                    src={logoBrand}
+                    // src={logoBrand}
                     alt="logo"
-                  />
+                  /> */}
                 </div>
                 <div className="my-4 flex items-center justify-center md:my-8 lg:mt-8 lg:mb-10">
                   <img
@@ -105,7 +116,7 @@ const navigate = useNavigate();
                 </div>
                 {sidebarData.map(({ id, name, icon }) => (
                   <div
-                    onClick={() => setShowLayout(name.toLowerCase())}
+                   
                     className={` ${
                       showLayout === name.toLowerCase() && "divider"
                     }
@@ -123,8 +134,7 @@ const navigate = useNavigate();
                   <LogoutIcon />
                 </span>
                 <h3 className="hidden pl-1 font-semibold text-[#3DBEC3] sm:pl-2 md:block lg:text-[20px]">
-                    <button onClick={logout}>
-                  Logout</button>
+                  <button onClick={(evt) => logout(evt)}>Logout</button>
                 </h3>
               </div>
             </div>
@@ -133,7 +143,7 @@ const navigate = useNavigate();
           )}
         </aside>
       </Sidebar>
-      <MainLayout showLayout={showLayout} />
+      <MainLayout showLayout={users} />
     </section>
   );
 }

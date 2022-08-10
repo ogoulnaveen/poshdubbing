@@ -1,13 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import InputBox from "../ReusableComponents/InputBox";
 import InputWithIcon from "../ReusableComponents/InputWithIcon/InputWithIcon";
 import HeadingTwo from "../ReusableComponents/HeadingTwo";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const ForgetPwdText = () => {
+  const [userData, setUserData] = useState({ email: "" });
+  const navigate = useNavigate();
+  const handleInputChange = (event) => {
+    userData[event.target.name] = event.target.value;
+    setUserData({ ...userData });
+  };
+  const handleSendReset = (event) => {
+    event.preventDefault();
+    console.log(userData);
+    axios
+      .post(`http://localhost:5000/send-reset`, userData)
+      .then(() => {
+        alert("An email sent to you, please check it");
+        navigate("/login");
+      })
+      .catch((err) => alert("Failed to reset, please try again"));
+  };
   return (
     <div className="flex-1 p-10 order-2 lg:order-none sm:w-[600px] mx-auto">
-      <Link to="/sign-in" className="font-semibold hidden lg:block mb-20">
+      <Link to="/login" className="font-semibold hidden lg:block mb-20">
         Back to login
       </Link>
       <div className="">
@@ -23,8 +42,16 @@ const ForgetPwdText = () => {
         </p>
         <form className="">
           <h1 className="text-xl font-bold text-[#012054] mb-2">Email</h1>{" "}
-          <InputBox placeholder="john24@gmail.com" className="rounded-3xl" />
+          <input
+          name='email'
+            className={`rounded-2xl py-2 border border-[#012054] px-4 w-full`}
+            id="grid-last-name"
+            onChange={handleInputChange}
+            type={'text'}
+            placeholder={''}
+          />
           <a
+            onClick={handleSendReset}
             href="#id"
             className="inline-block w-56 text-center font-medium py-5 leading-none border
       rounded-full text-white border-[#012054] hover:border-transparent
