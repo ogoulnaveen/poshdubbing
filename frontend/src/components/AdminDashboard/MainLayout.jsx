@@ -10,22 +10,21 @@ export default function MainLayout({ showLayout }) {
     position = "";
   }
 
-  // if (showLayout === "home") {
-  //   showLayout = <Home />;
-  // } else if (showLayout === "settings") {
-  //   showLayout = <Settings />;
-  // } else if (showLayout === "create") {
-  //   showLayout = <Create />;
-  // } else if (showLayout === "projects") {
-  //   showLayout = <Projects />;
-  // }
+  if (showLayout === "home") {
+    showLayout = <Home />;
+  } else if (showLayout === "settings") {
+    showLayout = <Settings />;
+  } else if (showLayout === "create") {
+    showLayout = <Create />;
+  } else if (showLayout === "projects") {
+    showLayout = <Projects />;
+  }
   return (
     <div className="w-full bg-[#032054]">
-      <div style={{padding:'50px',fontSize:'20px'}}
-        className={`sm:h-screen items-center ${position} bg-[#edf2ff] lg:rounded-l-[50px]`}
+      <div
+        className={`flex sm:h-screen items-center ${position} bg-[#edf2ff] lg:rounded-l-[50px]`}
       >
-        Number of Users<br/>
-       <span> {showLayout.length}</span>
+        {showLayout}
       </div>
     </div>
   );

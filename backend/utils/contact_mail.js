@@ -18,8 +18,8 @@ const sendContactEmail = async (email, message,name) => {
 	// });
 	sgMail.setApiKey('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');
 	let msg = {
-		to: 'info@ogoul.com', // Change to your recipient
-		from: 'pkyoonus09@gmail.com', // Change to your verified sender
+		to: '', // Change to your recipient
+		from: '', // Change to your verified sender
 		subject: subject,
 		text: text,
 		

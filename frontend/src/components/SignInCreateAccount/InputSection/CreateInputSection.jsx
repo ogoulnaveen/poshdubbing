@@ -56,7 +56,7 @@ const collectData = async () =>{
           <div className="text-base font-medium text-gray-400">
             Already have an account?{" "}
             <Link
-              to="/sign-in"
+              to="/login"
               className="text-[#012054] font-bold hover:underline ml-4"
             >
               Sign in
