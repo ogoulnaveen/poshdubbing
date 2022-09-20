@@ -1,8 +1,10 @@
 import { React, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/images/PoshDubbing H white .png";
-
-const Header = () => {
+import { FormattedMessage } from 'react-intl';
+import InjectIntl from 'react-intl-inject';
+const Header = ({props}) => {
+  console.log(props)
   const [isBoxVisible, setVisible] = useState({ isBoxVisible: false });
 
   const toogle = () => {
@@ -10,11 +12,12 @@ const Header = () => {
   };
 
   return (
+    <InjectIntl>
+    {({ intl }) => (
     <nav className="flex items-center justify-between flex-wrap bg-transparent lg:pt-4">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
         <Link to="/">
-        <img src={logo} className="w-64" alt="Website Logo" srcset="" />
-
+          <img src={logo} className="w-64" alt="Website Logo" srcset="" />
         </Link>
       </div>
       <div className="block lg:hidden">
@@ -52,16 +55,24 @@ const Header = () => {
               to="/about-us"
               className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-[#5BECC0] mr-10"
             >
-              About us
+              {intl.formatMessage({ id: 'home.english' })}
             </Link>
 
             <Link
               to="/pricing"
               className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-[#5BECC0] mr-10"
             >
-              Pricing
+              <FormattedMessage id="home.pricing"></FormattedMessage>
             </Link>
-            
+            <select
+              style={{ width: "73px" }}
+              value={props.language}
+              className="font-bold text-[#0057D4] text-sm hover:underline hover:text-[#0057D4]"
+              onChange={(evt) => props.setLanguage(evt.target.value)}
+            >
+              <option value="en"> english</option>
+              <option value="ar"> arabic</option>
+            </select>
           </div>
         </div>
         <div>
@@ -74,10 +85,12 @@ const Header = () => {
             {" "}
             Sign-in
           </Link>
-          
-        </div><br/><br/>
+        </div>
+        <br />
+        <br />
       </div>
     </nav>
+    )}</InjectIntl>
   );
 };
 

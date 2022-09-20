@@ -10,10 +10,11 @@ import {
   WhyPoshDubbing,
 } from "../components/Home";
 
-const Home = () => {
+const Home = (props) => {
+  console.log(props)
   return (
     <main>
-      <HeroSection />
+      <HeroSection props={props}/>
       <ProductVideo />
       <TryPoshDubbing />
       <ProductFeatures />
