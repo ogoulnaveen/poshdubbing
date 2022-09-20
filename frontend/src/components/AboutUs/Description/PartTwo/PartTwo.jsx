@@ -8,15 +8,9 @@ const PartTwo = () => {
         <HeadingTwo> Vision statement</HeadingTwo>
       </div>
       <p className="text-sm sm:text-base lg:text-lg font-medium text-[#012354]">
-        The European languages are members of the same family. Their separate
-        existence is a myth. For science, music, sport, etc, Europe uses the
-        same vocabulary. The languages only differ in their grammar, their
-        pronunciation and their most common words. Everyone realizes why a new
-        common language would be desirable: one could refuse to pay expensive
-        translators. To achieve this, it would be necessary to have uniform
-        grammar, pronunciation and more common words. If several languages
-        coalesce, the grammar of the resulting language is more simple and
-        regular.
+      We envision every video or movie to be dubbed in over 30+ multiple languages and even more to eliminate the restriction of consuming content in a specific language.
+In today's market or world its primary a creator's content reaches optimum audiences and various target audiences.
+
       </p>
     </div>
   );

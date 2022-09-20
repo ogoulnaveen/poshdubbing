@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductBox = ({ icon }) => {
+const ProductBox1 = ({ icon }) => {
   return (
     <>
       <div className="z-[1000] mx-auto mb-14">
@@ -9,9 +9,9 @@ const ProductBox = ({ icon }) => {
             <div className=" z-[1000] w-[130px] h-[130px] rounded-full bg-blue-100 p-10 mx-auto mb-8">
               <img src={icon} className="" alt="" srcset="" />
             </div>
-            <h1 className="text-lg1 font-bold mb-3 text-gray-600">Translates up to 12+ languages </h1>
+            <h1 className="text-lg1 font-bold mb-3 text-gray-600">Export Voiceovers</h1>
             <p className="text-lg1 text-gray-600 font-medium">
-            Select your preferred language we will handle the rest
+            Edit timestamps, remove or merge lines of text and export the file. 
             </p>
           </div>
           
@@ -25,4 +25,4 @@ const ProductBox = ({ icon }) => {
   );
 };
 
-export default ProductBox;
+export default ProductBox1;

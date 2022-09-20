@@ -18,7 +18,6 @@ const Home = () => {
       <TryPoshDubbing />
       <ProductFeatures />
       <WhyPoshDubbing />
-      <ClientFeedback />
       <Faq />
       <Footer />
     </main>

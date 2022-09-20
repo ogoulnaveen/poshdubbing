@@ -3,6 +3,7 @@ import resetImg from "../assets/images/Save new pwd.svg";
 import { Link ,useParams} from "react-router-dom";
 import ForgetResetTemp from "../components/ReusableComponents/ForgetResetTemp/ForgetResetTemp";
 import ImagePart from "../components/ForgetPwd/ImagePart";
+import Footer from "../components/ReusableComponents/Footer/Footer";
 import axios from 'axios';
 const ResetPwd = () => {
   const parseJwt = (token) => {
@@ -73,6 +74,7 @@ const ResetPwd = () => {
       .catch(() => alert("Failed to register, please try again"));
   };
   return (
+    <>
     <ForgetResetTemp>
       <div className="flex-1 py-10 px-6 order-2 lg:order-none sm:w-[600px] sm:mx-auto">
         <Link to="/login" className="font-semibold hidden lg:block mb-10">
@@ -122,8 +124,10 @@ const ResetPwd = () => {
         
         </div>
       </div>
-      <ImagePart image={resetImg} className="" />
+      <ImagePart image={resetImg} className="" />      
     </ForgetResetTemp>
+    <Footer />
+    </>
   );
 };
 

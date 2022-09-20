@@ -1,34 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import WrapperMax from "./../WrapperMax/WrapperMax";
-import logo from "../../../assets/images/PoshDubbing H white .png";
 import facebook from "../../../assets/images/icons8-facebook (1).svg";
 import instagram from "../../../assets/images/icons8-instagram.svg";
 import twitter from "../../../assets/images/icons8-twitter.svg";
 import HeadingThree from "../HeadingThree";
+import logo from "../../../assets/images/PoshDubbing H white .png";
 
-const Footer = () => {
+
+const Footer = ({className}) => {
   return (
-    <section className="bg-[#012054]">
+    <section className={`bg-[#012054] ${className}`}>
       <WrapperMax className="flex flex-wrap pt-36 pb-12">
         <div className="flex-1">
-          <img
-            src={logo}
-            className="w-[350px] -ml-5 -mt-16"
-            alt="Website Logo"
-            srcset=""
+        <img src={logo} 
+          className="w-[350px] -ml-5 -mt-16"
+          alt="Website Logo"
+          srcset=""
           />
           <p className="text-white font-thin text-lg mb-10 md:w-96">
-            1.10.32 and 1.10.33 of "de Finibus Bonorum er Malorum"(The Extremes
-            of Good and Evil) by Cicero.
-          </p>
+          An automatic transcription, captioning and voiceover platform in 12 different languages. Our automatic AI processor enables advanced editing capabilities.
+         </p>
           <p className="text-white text-lg mb-4 font-thin">
             Join our news letter
           </p>
           <div className="flex mb-8 md:mb-20">
             <div className="relative">
               <div className="absolute top-4 left-3">
-                <i className="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
+              {/* <i className="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i> */}
+              <i className="fa text-gray-400 z-20 hover:text-gray-500"></i>
               </div>
               <input
                 type="text"
@@ -43,8 +43,7 @@ const Footer = () => {
             </div>
           </div>
           <p className="text-gray-600 text-lg font-medium mb-10 md:mb-0">
-            @ Copyrights 2022 posh dubbing
-          </p>
+            @ Copyrights 2022 Website          </p>
         </div>
         <div className="flex-1">
           <div className="flex flex-wrap">

@@ -7,8 +7,6 @@ const FrequentQues = () => {
       <div className="flex flex-col justify-center space-y-8">
         <HeadingOne className="text-left">Frequently Asked Question</HeadingOne>
         <p className="text-lg text-[#012354] font-semibold">
-          Lorem ipsum dolor sit amet <br /> consectetur adipisicing elit. Est,
-          laudantium.
         </p>
         <a
           href="#id"

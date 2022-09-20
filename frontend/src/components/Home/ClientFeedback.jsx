@@ -12,7 +12,7 @@ const ClientFeedback = () => {
         <HeadingOne className="text-center mb-16">
           Our Client Feedback
         </HeadingOne>
-        <div className=" w-[600px] text-center mx-auto ">
+        <div className=" max-w-[600px] text-center mx-auto ">
           <img
             src={img1}
             className="mx-auto h-[150px] w-[150px] rounded-[50%]  border-8 border-[#053D9A] mb-6"

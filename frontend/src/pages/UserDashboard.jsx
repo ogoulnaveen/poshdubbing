@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import user1 from '../assets/images/user.jpg';
 import { Sidebar } from '../components/AdminDashboard';
-import MainLayout from '../components/AdminDashboard/MainLayout';
+import logo from "../assets/images/PoshDubbing H white .png";
+import logoD from "../assets/images/d-logo.png";
+
+
 import {
   CloseNavBar,
   CreateIcon,
@@ -12,33 +15,23 @@ import {
   SettingsIcon,
   LogoutIcon,
 } from '../assets/svg';
-import logo from "../assets/images/PoshDubbing H white .png";
-import logoD from "../assets/images/d-logo.png";
+import UserMainLayout from '../components/UserDashboard/UserMainLayout';
 
 const sidebarData = [
   { id: 0, name: 'Home', icon: <HomeIcon /> },
   { id: 1, name: 'Create', icon: <CreateIcon /> },
   { id: 2, name: 'Projects', icon: <ProjectsIcon /> },
   { id: 3, name: 'Settings', icon: <SettingsIcon /> },
-  { id: 4, name: 'Create Plan', icon: <SettingsIcon /> },
-  { id: 5, name: 'Users Plan', icon: <ProjectsIcon /> },
-  { id: 6, name: 'Payment History', icon: <SettingsIcon /> },
-  { id: 7, name: 'App Key', icon: <SettingsIcon /> },
+  { id: 4, name: 'Payment History', icon: <SettingsIcon /> },
+  { id: 5, name: 'Upgrage Plan', icon: <SettingsIcon /> },
+  { id: 6, name: 'App Key', icon: <SettingsIcon /> },
 ];
 
-export default function AdminDashboard() {
-  const test = localStorage.getItem('test');
-
-  const planId = localStorage.getItem('plan-id');
-
-  const user = JSON.parse(localStorage.getItem('user'));
-
+export default function UserDashboard() {
   const [width, setWidth] = useState(window.innerWidth);
   const [toggle, setToggle] = useState(true);
   const [showToggle, setShowToggle] = useState(false);
-  const [showLayout, setShowLayout] = useState(
-    test && planId ? 'create plan' : 'home'
-  );
+  const [showLayout, setShowLayout] = useState('home');
 
   const navigate = useNavigate();
 
@@ -57,13 +50,13 @@ export default function AdminDashboard() {
 
   const logoutUser = () => {
     localStorage.removeItem('user');
-    localStorage.removeItem('test');
-    localStorage.removeItem('plan-id');
-    localStorage.removeItem('plan');
     navigate('/');
   };
 
+  const user = JSON.parse(localStorage.getItem('user'));
+
   const logoBrand = width < 1024 ? logoD : logo;
+
 
   return (
     <section className='flex'>
@@ -89,7 +82,7 @@ export default function AdminDashboard() {
         </div>
         <aside
           className={`${toggle ? 'w-24' : 'w-0'}
-          bg-[#032054] text-white transition-all duration-200 lg:w-[450px] h-screen`}
+          bg-[#032054] text-white transition-all duration-200 lg:w-[450px]`}
         >
           {toggle || showToggle ? (
             <div className='flex flex-col justify-between h-screen'>
@@ -107,7 +100,6 @@ export default function AdminDashboard() {
                   <img
                     className='max-w-[60px] rounded-full border lg:max-w-[65px]'
                     src={user1}
-                    
                     alt='user'
                   />
                   <div className='hidden pl-5 break-all lg:block'>
@@ -120,15 +112,11 @@ export default function AdminDashboard() {
                 {sidebarData.map(({ id, name, icon }) => (
                   <div
                     key={id}
-                    onClick={() => {
-                      setShowLayout(name.toLowerCase());
-                      localStorage.removeItem('plan-id');
-                      localStorage.removeItem('single-plan');
-                    }}
+                    onClick={() => setShowLayout(name.toLowerCase())}
                     className={` ${
                       showLayout === name.toLowerCase() && 'divider'
                     }
-                    border-bottom flex flex-wrap items-center justify-center pt-2 pb-4 text-[#8090aa] lg:justify-start lg:pl-14`}
+                    border-bottom flex flex-wrap items-center justify-center pt-5 pb-4 text-[#8090aa] lg:justify-start lg:pl-14`}
                   >
                     {icon}
                     <h3 className='hidden font-bold lg:ml-8 lg:block'>
@@ -154,7 +142,7 @@ export default function AdminDashboard() {
           )}
         </aside>
       </Sidebar>
-      <MainLayout showLayout={showLayout} />
+      <UserMainLayout showLayout={showLayout} />
     </section>
   );
 }

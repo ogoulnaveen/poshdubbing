@@ -10,7 +10,7 @@ const TryPoshDubbing = () => {
   return (
     <section className="bg-[#EDF2FF]">
       <WrapperMin>
-        <HeadingOne className="mb-14 text-center">PoshDubbing</HeadingOne>
+        <HeadingOne className="mb-14 text-center">Poshdubbing</HeadingOne>
         <div className="lg:flex gap-x-6">
           <div className="mb-16 lg:mb-0">
             <h1 className="font-bold text-[#333333] text-2xl mb-6">

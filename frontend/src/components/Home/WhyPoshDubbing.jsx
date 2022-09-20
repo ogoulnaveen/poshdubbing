@@ -8,33 +8,30 @@ const WhyPoshDubbing = () => {
     <section className="bg-[#EDF2FF]">
       <WrapperMin>
         <HeadingOne className="mb-6 text-center md:mb-10 xl:mb-20">
-          Why Posh Dubbing
-        </HeadingOne>
+Why Posh Dubbing 
+          </HeadingOne>
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="mb-14 space-y-6 text-center md:text-left lg:mb-0 lg:space-y-10 xl:px-4 2xl:px-14">
             <DubbingAccordion
-              title="Richard McClintock, a Latin professor"
+              title=" Fast and Simple 
+              "
+            ></DubbingAccordion>
+            <DubbingAccordion
+              title="Foreign Language voiceover"
               description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis
           expedita eius culpa sint consequatur est iste possimus cupiditate,
           voluptatem facilis repudiandae, minus consequuntur ducimus quod
           nam minima maiores repellendus."
             ></DubbingAccordion>
             <DubbingAccordion
-              title="Richard McClintock, a Latin professor"
+              title="Text Editor"
               description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis
           expedita eius culpa sint consequatur est iste possimus cupiditate,
           voluptatem facilis repudiandae, minus consequuntur ducimus quod
           nam minima maiores repellendus."
             ></DubbingAccordion>
             <DubbingAccordion
-              title="Richard McClintock, a Latin professor"
-              description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis
-          expedita eius culpa sint consequatur est iste possimus cupiditate,
-          voluptatem facilis repudiandae, minus consequuntur ducimus quod
-          nam minima maiores repellendus."
-            ></DubbingAccordion>
-            <DubbingAccordion
-              title="Richard McClintock, a Latin professor"
+              title="Intuitive"
               description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis
           expedita eius culpa sint consequatur est iste possimus cupiditate,
           voluptatem facilis repudiandae, minus consequuntur ducimus quod
@@ -43,28 +40,28 @@ const WhyPoshDubbing = () => {
           </div>
           <div className="flex-1 space-y-6 text-center md:text-left lg:space-y-10 xl:px-4 2xl:px-14">
             <DubbingAccordion
-              title="Richard McClintock, a Latin professor"
+              title="Easy to Replace & Edit "
               description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis
           expedita eius culpa sint consequatur est iste possimus cupiditate,
           voluptatem facilis repudiandae, minus consequuntur ducimus quod
           nam minima maiores repellendus."
             ></DubbingAccordion>
             <DubbingAccordion
-              title="Richard McClintock, a Latin professor"
+              title="Trained AI "
               description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis
           expedita eius culpa sint consequatur est iste possimus cupiditate,
           voluptatem facilis repudiandae, minus consequuntur ducimus quod
           nam minima maiores repellendus."
             ></DubbingAccordion>
             <DubbingAccordion
-              title="Richard McClintock, a Latin professor"
+              title="Automatic Speech Detection "
               description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis
           expedita eius culpa sint consequatur est iste possimus cupiditate,
           voluptatem facilis repudiandae, minus consequuntur ducimus quod
           nam minima maiores repellendus."
             ></DubbingAccordion>
             <DubbingAccordion
-              title="Richard McClintock, a Latin professor"
+              title="Quick and Accurate"
               description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis
           expedita eius culpa sint consequatur est iste possimus cupiditate,
           voluptatem facilis repudiandae, minus consequuntur ducimus quod
@@ -76,7 +73,7 @@ const WhyPoshDubbing = () => {
     </section>
     // <section className="bg-[#EDF2FF]">
     //   <WrapperMin>
-    //     <Headline className="text-center">Why Posh Dubbing</Headline>
+    //     <Headline className="text-center">Why US</Headline>
     //     <div className="grid grid-cols-1 md:p-14 xl:grid-cols-2 ">
     //       <div
     //         className="accordion accordion-flush mb-8 divide-y-2 divide-solid divide-[#012054] xl:mb-0 xl:p-10"

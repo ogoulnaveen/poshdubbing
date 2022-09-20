@@ -1,12 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
+}
+
+.pt-72 {
+  padding-top: 18rem;
 }
 
 /* Accordion Customize */
@@ -16,6 +20,10 @@ body {
   box-shadow: none !important;
 }
 
+.text-lg1 {
+  font-size: 1.05rem;
+  line-height: 1.75rem;
+}
 .divider {
   position: relative;
   background-color: #1b3663;
@@ -23,7 +31,7 @@ body {
 }
 
 .divider::before {
-  content: "";
+  content: '';
   position: absolute;
   height: 100%;
   background-color: #3dbec3;
@@ -38,7 +46,7 @@ body {
 }
 
 .border-bottom::after {
-  content: "";
+  content: '';
   position: absolute;
   height: 1px;
   background-color: slategray;
@@ -54,7 +62,12 @@ body {
   }
 }
 
+
+
 @media screen and (min-width: 768px) {
+}
+.h-screen {
+  height: 120vh;
 }
 
 /* Table Design */
@@ -78,32 +91,26 @@ td {
   font-weight: 500;
 }
 
+.input-icons i {
+  position: absolute;
+}
 
+.input-icons {
+  width: 100%;
+  margin-bottom: 10px;
+}
 
+.icon {
+  padding: 10px;
+  min-width: 40px;
+}
 
+.input-field {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+}
 
-
-
-
-
-
-        .input-icons i {
-            position: absolute;
-        }
-          
-        .input-icons {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-          
-        .icon {
-            padding: 10px;
-            min-width: 40px;
-        }
-          
-        .input-field {
-            width: 100%;
-            padding: 10px;
-            text-align: center;
-        }
-    
+input:focus-visible {
+  outline: none !important;
+}

@@ -7,7 +7,6 @@ const AboutUs = () => {
   return (
     <section>
       <Description />
-      <Team />
       <Footer />
     </section>
   );

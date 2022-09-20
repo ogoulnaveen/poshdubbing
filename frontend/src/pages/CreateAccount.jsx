@@ -9,7 +9,7 @@ const CreateAccount = () => {
   return (
     <SignCreateTemp>
       <CreateInputSection />
-      <ImageSection image={createImg} title="Glad to see you" />
+      <ImageSection image={createImg} title="Experience the magic of AI " />
     </SignCreateTemp>
   );
 };

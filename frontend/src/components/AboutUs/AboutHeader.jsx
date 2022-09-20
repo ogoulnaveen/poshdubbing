@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/PoshDubbing H (1).png";
 import WrapperMax from "../ReusableComponents/WrapperMax/WrapperMax";
+import logo from "../../assets/images/PoshDubbing H (1).png";
 
 const AboutHeader = () => {
   const [isBoxVisible, setVisible] = useState({ isBoxVisible: false });
@@ -14,7 +14,8 @@ const AboutHeader = () => {
       <nav className="flex items-center justify-between flex-wrap bg-transparent lg:pt-4">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
           <Link to="/">
-            <img src={logo} className="w-64" alt="Website Logo" srcset="" />
+          <img src={logo} className="w-64" alt="Website Logo" srcset="" />
+
           </Link>
         </div>
         <div className="block lg:hidden">
@@ -80,6 +81,7 @@ const AboutHeader = () => {
               Sign-in
             </Link>
           </div>
+          <br/>
         </div>
       </nav>
     </WrapperMax>

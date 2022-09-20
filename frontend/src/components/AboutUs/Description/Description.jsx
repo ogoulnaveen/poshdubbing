@@ -10,9 +10,9 @@ const Description = () => {
     <div className="bg-[#EDF2FF]">
       <AboutHeader />
       <WrapperMax className="pt-14">
-        <PartOne />
+      <PartThree />
+
         <PartTwo />
-        <PartThree />
       </WrapperMax>
     </div>
   );

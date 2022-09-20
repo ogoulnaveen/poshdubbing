@@ -1,13 +1,13 @@
 import React from 'react';
-import CreatePlan from '../../pages/CreatePlan.jsx';
-import CreateAdmin from './CreateAdmin.jsx';
-import { Home, Settings } from './index.js';
-import PaymentHistory from './PaymentHistory.jsx';
-import Projects from './Projects.jsx';
-import UserPlans from './UserPlans.jsx';
-import AdminAppKey from './AdminAppKey.jsx';
+import { UserHome } from '../../pages/UserHome.jsx';
+import Create from '../AdminDashboard/Create.jsx';
+import Settings from './../AdminDashboard/Settings';
+import AppKey from './AppKey.jsx';
+import UpgragePlan from './UpgragePlan.jsx';
+import UserPaymentHistory from './UserPaymentHistory.jsx';
+import UserProjects from './UserProjects.jsx';
 
-export default function MainLayout({ showLayout }) {
+export default function UserMainLayout({ showLayout }) {
   let position = 'justify-center';
   let position2 = 'items-center';
   let display = 'flex';
@@ -21,21 +21,19 @@ export default function MainLayout({ showLayout }) {
   }
 
   if (showLayout === 'home') {
-    showLayout = <Home />;
+    showLayout = <UserHome />;
   } else if (showLayout === 'settings') {
     showLayout = <Settings />;
   } else if (showLayout === 'create') {
-    showLayout = <CreateAdmin />;
+    showLayout = <Create />;
   } else if (showLayout === 'projects') {
-    showLayout = <Projects />;
-  } else if (showLayout === 'create plan') {
-    showLayout = <CreatePlan />;
-  } else if (showLayout === 'users plan') {
-    showLayout = <UserPlans />;
+    showLayout = <UserProjects />;
   } else if (showLayout === 'payment history') {
-    showLayout = <PaymentHistory />;
+    showLayout = <UserPaymentHistory />;
+  } else if (showLayout === 'upgrage plan') {
+    showLayout = <UpgragePlan />;
   } else if (showLayout === 'app key') {
-    showLayout = <AdminAppKey />;
+    showLayout = <AppKey />;
   }
 
   return (

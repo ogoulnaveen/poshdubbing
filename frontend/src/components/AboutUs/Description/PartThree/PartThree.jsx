@@ -5,18 +5,11 @@ const PartThree = () => {
   return (
     <div className="pb-12 lg:pb-20">
       <div className="mb-4 lg:mb-10">
-        <HeadingTwo> Posh dubbing</HeadingTwo>
+        <HeadingTwo> About Us </HeadingTwo>
       </div>
       <p className="text-sm sm:text-base lg:text-lg font-medium text-[#012354]">
-        The European languages are members of the same family. Their separate
-        existence is a myth. For science, music, sport, etc, Europe uses the
-        same vocabulary. The languages only differ in their grammar, their
-        pronunciation and their most common words. Everyone realizes why a new
-        common language would be desirable: one could refuse to pay expensive
-        translators. To achieve this, it would be necessary to have uniform
-        grammar, pronunciation and more common words. If several languages
-        coalesce, the grammar of the resulting language is more simple and
-        regular.
+      Posh Dubbing is an automatic video dubbing platform. We are building a tool bridging artificial intelligence and human creativity. With the elimination of language barrier the possibilities for localization and multiple file generation are endless.
+
       </p>
     </div>
   );

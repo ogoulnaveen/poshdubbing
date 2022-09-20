@@ -15,7 +15,7 @@ const FaqAccordion = () => {
       id="accordionFlushExample"
     >
       <AccordionBox
-        title="Richard McClintock, a Latin professor at Hampden-Sydney?"
+        title="1. Is there a video length or file size limit?"
         headingId="flush-headingOne"
         collapseId="flush-collapseOne"
       >
@@ -24,7 +24,7 @@ const FaqAccordion = () => {
         accordion body.
       </AccordionBox>
       <AccordionBox
-        title="Richard McClintock, a Latin professor at Hampden-Sydney?"
+        title="2. What languages does Poshtranslate support ?"
         headingId="flush-headingTwo"
         collapseId="flush-collapseTwo"
       >
@@ -33,22 +33,18 @@ const FaqAccordion = () => {
         accordion body.
       </AccordionBox>
       <AccordionBox
-        title="Richard McClintock, a Latin professor at Hampden-Sydney?"
+        title="3. Can I try Poshtranslate for free?"
         headingId="flush-headingThree"
         collapseId="flush-collapseThree"
       >
-        Placeholder content for this accordion, which is intended to demonstrate
-        the <code>.accordion-flush</code> className. This is the first item's
-        accordion body.
-      </AccordionBox>
+Yes, we have up to 3 files free trial 
+    </AccordionBox>
       <AccordionBox
-        title="Richard McClintock, a Latin professor at Hampden-Sydney?"
+        title="4. Can I share the files with my colleagues?"
         headingId="flush-headingFour"
         collapseId="flush-collapseFour"
       >
-        Placeholder content for this accordion, which is intended to demonstrate
-        the <code>.accordion-flush</code> className. This is the first item's
-        accordion body.
+       Yes, you can export the document and share it with your colleagues.
       </AccordionBox>
     </div>
   );

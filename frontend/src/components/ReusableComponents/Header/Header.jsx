@@ -13,7 +13,8 @@ const Header = () => {
     <nav className="flex items-center justify-between flex-wrap bg-transparent lg:pt-4">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
         <Link to="/">
-          <img src={logo} className="w-64" alt="Website Logo" srcset="" />
+        <img src={logo} className="w-64" alt="Website Logo" srcset="" />
+
         </Link>
       </div>
       <div className="block lg:hidden">
@@ -60,12 +61,7 @@ const Header = () => {
             >
               Pricing
             </Link>
-            <Link
-              to="/dashboard"
-              className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-[#5BECC0] "
-            >
-              Admin(Testing)
-            </Link>
+            
           </div>
         </div>
         <div>
@@ -78,7 +74,8 @@ const Header = () => {
             {" "}
             Sign-in
           </Link>
-        </div>
+          
+        </div><br/><br/>
       </div>
     </nav>
   );

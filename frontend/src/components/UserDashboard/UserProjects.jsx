@@ -4,7 +4,7 @@ import axios from 'axios';
 import moment from 'moment';
 import FileDownload from 'js-file-download';
 
-const Projects = () => {
+const UserProjects = () => {
   const [videos, setVideos] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [startDate, setStartDate] = useState('');
@@ -17,18 +17,15 @@ const Projects = () => {
     axios.defaults.headers.common['authorization'] = `Bearer ${user.token}`;
   }
   const listVideos = async () => {
-    const { data } = await axios('http://localhost:5000/media/admin-all');
+    const { data } = await axios('http://localhost:5000/media/user-all');
     setVideos(data.media);
   };
 
   const fetchLatest = async () => {
-    const { data } = await axios.post(
-      'http://localhost:5000/media/filter-admin',
-      {
-        startDate,
-        endDate,
-      }
-    );
+    const { data } = await axios.post('http://localhost:5000/media/filter', {
+      startDate,
+      endDate,
+    });
 
     setVideos(data.filteredVideos);
   };
@@ -199,4 +196,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default UserProjects;

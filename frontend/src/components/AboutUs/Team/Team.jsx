@@ -64,6 +64,8 @@ const Team = () => {
         </div>
       </WrapperMax>
     </div>
+
+    
   );
 };
 

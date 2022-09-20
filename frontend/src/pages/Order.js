@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+// import PasswordInput from '../../ReusableComponents/PasswordInput';
+// import InputWithIcon from './../../ReusableComponents/InputWithIcon/InputWithIcon';
 import HeadingTwo from './../../ReusableComponents/HeadingTwo';
 import { MdOutlinePriceChange } from 'react-icons/md';
 import axios from 'axios';
@@ -12,7 +14,7 @@ const CreateInputSection = () => {
   const [passwordType, setPasswordType] = useState('password');
   const navigate = useNavigate();
   const [plans, setPlans] = useState([]);
-  const [selectedPlan, setSelectedPlan] = useState('Choose Plan');
+  const [selectedPlan, setSelectedPlan] = useState(null);
   const [amount, setAmount] = useState(null);
 
   const togglePassword = () => {
@@ -23,22 +25,32 @@ const CreateInputSection = () => {
     setPasswordType('password');
   };
 
+  const collectData = async (e) => {
+    e.preventDefault();
+
+    let result = await fetch('http://localhost:5000/createaccount', {
+      method: 'post',
+      body: JSON.stringify({ name, email, password }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    result = await result.json();
+    console.log(result);
+    // navigate('/login');
+  };
+
   const fetchAllPlansData = async () => {
     const { data } = await axios('http://localhost:5000/plans/');
     setPlans(data.plans);
   };
   useEffect(() => {
+    // localStorage.setItem('all-plans', JSON.stringify(plans));
     fetchAllPlansData();
-    if (
-      selectedPlan == 0 ||
-      selectedPlan === 'Free Plan' ||
-      selectedPlan === 'Choose Plan'
-    ) {
-      return setSdkReady(false);
-    }
-  }, [selectedPlan]);
+  }, []);
 
   const [sdkReady, setSdkReady] = useState(false);
+  // const navigate = useNavigate();
 
   const payToPaypal = () => {
     const addPayPalScript = async () => {
@@ -61,6 +73,28 @@ const CreateInputSection = () => {
     }
   };
 
+  // useEffect(() => {
+  //   const addPayPalScript = async () => {
+  //     const clientId =
+  //       'AYYvjg8NzxMCiG6d4t1TZQ-uVud3UzbGwW3orhpBxrpVi2diPnJFbsWQ_8shJBLAisAQ_TPZoZIVDw49';
+  //     const script = document.createElement('script');
+  //     script.type = 'text/javascript';
+  //     script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
+  //     script.async = true;
+  //     script.onload = () => {
+  //       setSdkReady(true);
+  //     };
+
+  //     document.body.appendChild(script);
+  //   };
+  //   if (!window.paypal) {
+  //     addPayPalScript();
+  //   } else {
+  //     setSdkReady(true);
+  //   }
+  // }, []);
+
+  // my work;
   const filteredPlans = plans?.filter((plan) => {
     if (
       plan.annualPrice === parseInt(selectedPlan) ||
@@ -71,6 +105,7 @@ const CreateInputSection = () => {
     }
   });
   const result = Object.assign({}, filteredPlans);
+  console.log(selectedPlan);
 
   const paymentDone = async (details, data) => {
     const planId = result[0]['_id'];
@@ -81,38 +116,14 @@ const CreateInputSection = () => {
       setSdkReady(false);
       alert('Done');
       await axios.post('http://localhost:5000/transactions', transactionsData);
-      navigate('/login');
-    }
-  };
-
-  const collectData = async (e) => {
-    e.preventDefault();
-    const planId = result[0]['_id'];
-    const otherId = result[0]['_id'];
-    const storageLeft = result[0]['storageAllowed'];
-    const videosLeft = result[0]['videosAllowed'];
-    const data = {
-      planId,
-      storageLeft,
-      videosLeft,
-      name,
-      email,
-      password,
-      otherId,
-    };
-
-    await axios.post('http://localhost:5000/createaccount', data);
-
-    if (selectedPlan == 0 || selectedPlan === 'Free Plan') {
-      navigate('/login');
+      navigate('/user-dashboard');
     }
   };
 
   return (
     <div className='flex-1 p-10 order-2 lg:order-none sm:w-[600px] mx-auto'>
       <div className='mb-8 text-center'>
-        <HeadingTwo className='mb-4 font-bold'>Sign Up Page: 
-</HeadingTwo>
+        <HeadingTwo className='mb-4 font-bold'>Hello</HeadingTwo>
       </div>
       <form className='space-y-4 xl:space-y-8' onSubmit={collectData}>
         <div className='flex flex-wrap items-stretch w-full relative bg-white items-center rounded-3xl mb-6 pr-10 shadow shadow-[#5BECC0] '>
@@ -127,7 +138,6 @@ const CreateInputSection = () => {
             placeholder='enter name'
             value={name}
             onChange={(e) => setName(e.target.value)}
-            required
           />
         </div>
         <div className='flex flex-wrap items-stretch w-full relative bg-white items-center rounded-3xl mb-6 pr-10 shadow shadow-[#5BECC0] '>
@@ -142,7 +152,6 @@ const CreateInputSection = () => {
             placeholder='enter Email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
           />
         </div>
         <div className='flex flex-wrap items-stretch w-full relative h-15 bg-white items-center rounded-3xl mb-4 shadow shadow-[#5BECC0] '>
@@ -157,7 +166,6 @@ const CreateInputSection = () => {
             placeholder='enter Password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
           />
           <div className='flex -mr-px' onClick={togglePassword}>
             <span className='flex items-center px-4 leading-normal text-gray-500 whitespace-no-wrap border-0 rounded rounded-l-none'>
@@ -186,14 +194,15 @@ const CreateInputSection = () => {
             required
             onClick={(e) => {
               const amt = parseInt(e.target.value);
-
               setAmount(amt);
             }}
           >
-            <option value='Choose Plan'>Choose Plan</option>
             {plans.map((plan) => (
               <>
-                <option value={plan.monthlyPrice}>
+                <option
+                  value={plan.monthlyPrice}
+                  className='cursor-pointer hover:cursor-pointer'
+                >
                   {plan.name} (Monthly ${plan.monthlyPrice})
                 </option>
                 <option value={plan.annualPrice}>
@@ -203,6 +212,14 @@ const CreateInputSection = () => {
             ))}
           </select>
         </div>
+
+        {/* <i class="fa fa-user icon"></i>
+        <input type="Text" placeholder="enter name" value={name} onChange={(e)=>setName(e.target.value)}/><br></br> */}
+        {/* <i class="fa fa-user icon"></i>
+        <input type="Text" placeholder="enter Email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+        <br></br> */}
+        {/* <i class="fa fa-user icon"></i>
+        <input type="Text" placeholder="enter Password" value={password} onChange={(e)=>setPassword(e.target.value)}/> */}
 
         <div className='text-center'>
           <button
@@ -215,16 +232,6 @@ const CreateInputSection = () => {
           >
             Create Account
           </button>
-          {sdkReady && (
-            <h1 className='mb-4 text-lg font-bold text-center '>
-              One Step to complete the payment
-            </h1>
-          )}
-          <div className='w-64 mx-auto'>
-            {sdkReady && name && email && password && (
-              <PayPalButton amount={amount} onSuccess={paymentDone} />
-            )}
-          </div>
           <div className='text-base font-medium text-gray-400'>
             Already have an account?{' '}
             <Link
@@ -236,6 +243,7 @@ const CreateInputSection = () => {
           </div>
         </div>
       </form>
+      {sdkReady && <PayPalButton amount={amount} onSuccess={paymentDone} />}
     </div>
   );
 };

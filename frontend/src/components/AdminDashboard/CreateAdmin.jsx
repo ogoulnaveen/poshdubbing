@@ -4,7 +4,7 @@ import WrapperMin from '../ReusableComponents/WrapperMin/WrapperMin';
 import axios from 'axios';
 import { useEffect } from 'react';
 
-const Create = () => {
+const CreateAdmin = () => {
   const [name] = useState('');
   const [videos, setVideos] = useState([]);
   const [uploaded, setUploaded] = useState(null);
@@ -61,31 +61,7 @@ const Create = () => {
 
   // triggers when file is selected with click
   const handleChange = (e) => {
-    if (e.target.files.length > user?.videosLeft) {
-      return alert(`Sorry, you have just ${user.videosLeft} video left`);
-    }
-    if (user.videosLeft <= 0) {
-      return alert('Your video limit is completed. Please Upgrade');
-    }
-    if (user.storageLeft <= 0) {
-      return alert('Your storage is empty. Please Upgrade');
-    }
-    // if (today > new Date(user.planValidity)) {
-    //   return alert('Your Period ends');
-    // }
-
-    let result;
-    if (userInfo?.storageLeft.toLowerCase().includes('mb')) {
-      result = toBytes(userInfo?.storageLeft.replace(/[a-z ]/gi, ''), 'MB');
-    } else {
-      result = toBytes(userInfo?.storageLeft.replace(/[a-z ]/gi, ''), 'GB');
-    }
-
-    if (e.target.files[0].size > result) {
-      return alert(
-        `Sorry, You're only allowed to upload video of size ${userInfo?.storageLeft} `
-      );
-    } else {
+    if (e.target.files[0]) {
       setVideos(e.target.files);
       var files = e.target.files;
       setLength(files.length);
@@ -235,4 +211,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default CreateAdmin;
