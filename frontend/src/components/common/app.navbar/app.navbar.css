@@ -1,0 +1,21 @@
+.logocss{
+    position: absolute;
+    width: 255px;
+    height: 88px;
+    left: 54px;
+    top: -13px;
+
+}
+
+.navtabcss{
+    position: absolute;
+    width: 423px;
+    height: 42px;
+    left: 387px;
+    top: 17px;
+}
+
+.langcss{
+    Border: none;
+
+}

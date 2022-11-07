@@ -1,70 +1,80 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import 'tw-elements';
-import { Settings, Create } from './components/AdminDashboard';
-import messages from "../src/languages-intl/index";
+import './App.css';
+import HomePage from './container/home.page/home.page';
+import React from 'react';
 import {
-  Home,
-  AboutUs,
-  CreateAccount,
-  SignIn,
-  ResetPwd,
-  ForgetPwd,
-  ErrorPage,
-  OurFeatures,
-  Pricing,
-  AdminDashboard,
-} from './pages/index';
-import UserDashboard from './pages/UserDashboard';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import ProtectedRoutes from './utils/ProtectedRoutes';
-import ProtectedRoutesAdmin from './utils/ProtectedRoutesAdmin';
-import {IntlProvider} from "react-intl";
-import React,{useState} from "react";
-function App() {
-  const [appLanguage, setAppLanguage] = useState(window.localStorage.getItem('lang')||'en');
-  const setLanguage = (language) => {
-    setAppLanguage(language)
-    window.localStorage.setItem('lang', language);  
-    
-}
-  return (
-    <IntlProvider locale={appLanguage} messages={messages[appLanguage]} >
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Home setLanguage={setLanguage} language={appLanguage}/>} />
-        <Route path='about-us' element={<AboutUs  setLanguage={setLanguage} language={appLanguage}/>} />
-        <Route path='our-features' element={<OurFeatures />} />
-        <Route path='pricing' element={<Pricing />} />
-        {/* <Route path="/sign-in" element={<SignIn />} /> */}
-        <Route path='/login' element={<SignIn />} />
-        <Route path='createaccount' element={<CreateAccount />} />
-        <Route path='forget-password' element={<ForgetPwd />} />
-        <Route path='/reset-password/:token' element={<ResetPwd />} />
-        <Route
-          path='/dashboard'
-          element={
-            <ProtectedRoutesAdmin>
-              <AdminDashboard />
-            </ProtectedRoutesAdmin>
-          }
-        />
-        <Route path='settings' element={<Settings />} />
-        <Route path='create' element={<Create />} />
-        <Route
-          path='user-dashboard'
-          element={
-            <ProtectedRoutes>
-              <UserDashboard />
-            </ProtectedRoutes>
-          }
-        />
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
+import LoginPage from './container/login.page/login.page';
+import RegisterPage from './container/register.page/register.page';
+import ForgetPage from './container/ForgotPassword/ForgotPassword.page';
 
-        <Route path='*' element={<ErrorPage />} />
-      </Routes>
-      <ToastContainer position='top-center' autoClose={1000} />
-    </BrowserRouter>
-    </IntlProvider>
+import Uploadfile from './container/user.dashboard/Pages/Files/Files';
+
+// import Sidebar from './container/sidebar/sidebar';
+
+// Dashboard Routes
+import { dashboardRoutes } from "./container/user.dashboard/Navbar/Routes";
+import UserDashboardLayout from './container/user.dashboard.layout/user.dashboard.layout';
+// import AboutUsText from './components/common/about.us.text/about.us.text';
+import { adminDashboardRoutes } from "./container/admin.dashboard/admin.navbar.and.routes/admin.routes";
+import AdminDashboardLayout from './container/admin.dashboard.layout/admin.dashboard.layout';
+
+
+function App() {
+
+  const userDashboardLayout = (
+    <Route path={'/dashboard'} element={<UserDashboardLayout />}>
+      {dashboardRoutes.map((item, index) => (
+        <Route key={index} path={item.path} element={item.component} />
+      ))}
+    </Route>
+  );
+
+  const adminDashboardLayout = (
+    <Route path={'/admin-dashboard'} element={<AdminDashboardLayout />}>
+      {adminDashboardRoutes.map((item, index) => (
+        <Route key={index} path={item.path} element={item.component} />
+      ))}
+    </Route>
+  );
+
+  return (
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/forgetpassword" element={<ForgetPage />} />
+          <Route path="/uploadfile" element={<Uploadfile/>} />
+
+          
+
+          {/* <Route path="/about" element={<AboutUsText />} /> */}
+
+
+
+          {/* //This is for temporary purpose */}
+
+
+          {/* <Route path="/dashboard" element={<Sidebar />} /> */}
+
+          {userDashboardLayout}
+          {adminDashboardLayout}
+        </Routes>
+
+
+
+        {/* main folder have sidebar and right side portion is for pages  */}
+        {/* <Main>
+          <Routes>
+            <Route path="/home" element={<HomePage />} />
+          </Routes>
+        </Main> */}
+      </div >
+    </Router >
   );
 }
 

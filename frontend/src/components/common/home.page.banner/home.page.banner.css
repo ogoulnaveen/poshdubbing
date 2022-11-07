@@ -1,0 +1,43 @@
+.header {
+    height: 100vh;
+    border-radius: 0px;
+    width: 100%;
+}
+.text-style {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 800;
+    font-size: 50px;
+    line-height: 80px;
+    letter-spacing: -0.03em;
+    color: #435253;
+    margin-top: -80px !important;
+    margin: 0px 0px 0px 29px;
+}
+.responsive-text-style {
+    font-weight: 700 !important;
+    font-size: 25px !important;
+    line-height: 40px !important;
+}
+.text-style-2 {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: -0.02em;
+    color: #5d5d60;
+    padding: 0px 112px 0px 21px;
+}
+
+
+.css-ahj2mt-MuiTypography-root {
+    margin: 0;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+    margin: 0px 0px 0px 12px !important;
+}
+
